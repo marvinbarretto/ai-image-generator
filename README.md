@@ -1,73 +1,69 @@
-# React + TypeScript + Vite
+# AI Image Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An example of a modern React application for generating AI images with a clean, responsive interface.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **AI Image Generation** - Simulate the process of generating images from text prompts
+- **Mock API** - Mocked API used to return images and errors
+- **History Tracking** - View and manage previously generated images
+- **Responsive Design** - Works seamlessly across desktop and mobile devices
+- **Real-time Validation** - Prompt validation with minimum character requirements
+- **Loading States** - Smooth loading indicators during image generation
 
-## React Compiler
+## 🚀 Prerequisites
+- Node.js (version 18 or higher)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📦 Installation
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd ai-image-generator
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Install dependencies:
+```bash
+npm install
 ```
+
+## 🛠️ Development
+
+### Available Scripts
+
+- **Start development server:**
+  ```bash
+  npm run dev
+  ```
+  Launches the development server with Hot Module Replacement (HMR)
+
+- **Build for production:**
+  ```bash
+  npm run build
+  ```
+  Creates an optimized production build (runs TypeScript compiler + Vite build)
+
+## 🏗️ Project Structure
+
+```
+src/
+├── api/                    # API integration (image generation)
+├── components/             # Shared components (GenerateButton)
+├── core/                   # Core layout components (Header, Footer, Layout)
+├── features/               # Feature-specific components
+│   ├── history/           # Image history management
+│   ├── image-display/     # Image display and controls
+│   └── prompt-section/    # Prompt input and validation
+├── hooks/                  # Custom React hooks
+├── shared/                # Shared utilities (LoadingSpinner)
+├── styles/                # Global styles and mixins
+└── types/                 # TypeScript type definitions
+```
+
+## 🔧 Tech Stack
+
+- **Frontend:** React 19 with TypeScript
+- **Build Tool:** Vite with React plugin
+- **Styling:** SCSS modules + CSS
+- **Development:** Hot Module Replacement (HMR) for fast development
+

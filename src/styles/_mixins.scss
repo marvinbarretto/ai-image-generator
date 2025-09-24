@@ -34,11 +34,13 @@
   &:hover:not(:disabled) {
     background: var(--color-primary-hover);
     border-color: var(--color-primary-hover);
+    box-shadow: var(--shadow-button-primary-hover);
   }
 
   &:active:not(:disabled) {
     background: var(--color-primary-active);
     border-color: var(--color-primary-active);
+    box-shadow: var(--shadow-button-primary-active);
   }
 }
 
@@ -50,6 +52,7 @@
   &:hover:not(:disabled) {
     background: var(--color-surface-secondary);
     border-color: var(--color-border-secondary);
+    box-shadow: var(--shadow-button-secondary-hover);
   }
 }
 
@@ -103,13 +106,15 @@
   border-color: var(--color-error);
 
   &:hover:not(:disabled) {
-    background: #dc2626; /* Darker red on hover */
-    border-color: #dc2626;
+    background: var(--color-error-hover);
+    border-color: var(--color-error-hover);
+    box-shadow: var(--shadow-button-error-hover);
   }
 
   &:active:not(:disabled) {
-    background: #b91c1c; /* Even darker red on active */
-    border-color: #b91c1c;
+    background: var(--color-error-active);
+    border-color: var(--color-error-active);
+    box-shadow: var(--shadow-button-error-active);
   }
 }
 

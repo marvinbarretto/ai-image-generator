@@ -89,6 +89,8 @@ h6 {
   --color-warning: #f59e0b;
   --color-warning-bg: #fffbeb;
   --color-error: #ef4444;
+  --color-error-hover: #dc2626;
+  --color-error-active: #b91c1c;
   --color-error-bg: #fef2f2;
 
   /* Spacing Scale (4px base) */
@@ -144,6 +146,13 @@ h6 {
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* Button-specific shadows */
+  --shadow-button-primary-hover: 0 4px 12px rgba(59, 130, 246, 0.3);
+  --shadow-button-primary-active: 0 2px 6px rgba(59, 130, 246, 0.4);
+  --shadow-button-secondary-hover: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-button-error-hover: 0 4px 12px rgba(239, 68, 68, 0.3);
+  --shadow-button-error-active: 0 2px 6px rgba(239, 68, 68, 0.4);
 
   /* Transitions */
   --transition-fast: 150ms ease;
