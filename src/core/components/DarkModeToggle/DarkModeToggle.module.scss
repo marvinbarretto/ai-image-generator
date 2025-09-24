@@ -1,0 +1,16 @@
+@use '@/styles/main' as *;
+
+.toggle {
+  @include button-base;
+  @include button-secondary;
+  @include button-small;
+
+  .icon {
+    font-size: var(--font-size-base);
+  }
+
+  .label {
+    font-size: var(--font-size-sm);
+  }
+
+}

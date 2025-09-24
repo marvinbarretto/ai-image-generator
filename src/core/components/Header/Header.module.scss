@@ -8,7 +8,9 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 clamp(var(--spacing-md), 3vw, var(--spacing-xl));
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .title {
