@@ -1,0 +1,19 @@
+@use '@/styles/main' as *;
+
+.button {
+  @include button-base;
+  @include button-primary;
+  @include button-large;
+  @include button-full-width;
+
+  &.loading {
+    span {
+      margin-left: var(--spacing-xs);
+    }
+  }
+
+  &.valid {
+    @include button-active;
+  }
+}
+

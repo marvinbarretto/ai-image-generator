@@ -1,0 +1,5 @@
+// Main SCSS file that exports all variables and mixins
+@use 'mixins' as *;
+
+// Re-export everything for components to use
+@forward 'mixins';

@@ -1,0 +1,71 @@
+@use '@/styles/main' as *;
+
+.container {
+  width: 100%;
+  flex: 1;
+}
+
+.labelGroup {
+  margin-bottom: var(--spacing-sm);
+  text-align: center;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+}
+
+.labelHint {
+  font-size: 0.8125rem; // 13px, slightly smaller than sm
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-normal);
+  margin-bottom: 0.75rem;
+  transition: color var(--transition-duration, 0.2s) ease;
+
+  &.valid {
+    color: var(--color-success);
+    font-weight: var(--font-weight-medium);
+  }
+
+  &.invalid {
+    color: var(--color-text-secondary);
+  }
+}
+
+.input {
+  @include form-input;
+  min-height: 7.5rem;
+  resize: vertical;
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  position: relative;
+
+  @include mobile-up {
+    min-height: 8.75rem;
+  }
+}
+
+.feedback {
+  margin-top: var(--spacing-sm);
+  min-height: 1.25rem;
+}
+
+.errorMessage {
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+  font-weight: var(--font-weight-medium);
+  text-align: right;
+
+  @include mobile-up {
+    text-align: left;
+  }
+}
+
+.input.error {
+  @include form-error;
+}
+
