@@ -97,6 +97,22 @@
   }
 }
 
+@mixin button-danger {
+  background: var(--color-error);
+  color: var(--color-text-inverse);
+  border-color: var(--color-error);
+
+  &:hover:not(:disabled) {
+    background: #dc2626; /* Darker red on hover */
+    border-color: #dc2626;
+  }
+
+  &:active:not(:disabled) {
+    background: #b91c1c; /* Even darker red on active */
+    border-color: #b91c1c;
+  }
+}
+
 // Form System
 @mixin form-input {
   width: 100%;

@@ -1,9 +1,10 @@
 import { Layout } from '@/core/components/Layout'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { GeneratedImage } from './types'
-import { PromptSection } from '@/components/PromptSection'
-import { ImageSection } from '@/components/ImageSection'
+import { PromptSection } from '@/features/prompt-section/PromptSection'
+import { ImageSection } from '@/features/image-display/ImageSection'
 import { generateImage } from './api/imageGenerator'
+import { HistorySection, historyService } from './features/history'
 
 function App() {
   const [prompt, setPrompt] = useState('')
@@ -11,9 +12,14 @@ function App() {
   const [currentImage, setCurrentImage] = useState<GeneratedImage | null>(null)
   const [showPrompt, setShowPrompt] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [history, setHistory] = useState<GeneratedImage[]>([])
   const minLength = 10
   const isValidPrompt = prompt.trim().length >= minLength
 
+  useEffect(() => {
+    setHistory(historyService.getHistory())
+  }, [])
+  
   const handleGenerate = async () => {
     if (!isValidPrompt) {
       setError(`Please enter at least ${minLength} characters for your prompt`)
@@ -26,6 +32,10 @@ function App() {
     try {
       const image = await generateImage(prompt)
       setCurrentImage(image)
+
+      historyService.addImageToHistory(image)
+      setHistory(historyService.getHistory())
+
       setPrompt('') // Clear the prompt after successful generation
       setShowPrompt(false) // Hide prompt section after successful generation
     } catch (err) {
@@ -59,6 +69,18 @@ function App() {
           onGenerateNew={handleGenerateNew}
         />
       )}
+
+      <HistorySection
+        history={history}
+        onClearHistory={() => {
+          historyService.clearHistory()
+          setHistory([])
+        }}
+        onDeleteImage={(imageId) => {
+          historyService.removeImageFromHistory(imageId)
+          setHistory(historyService.getHistory())
+        }}
+      />
     </Layout>
   )
 }

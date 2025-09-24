@@ -1,5 +1,5 @@
-import { GeneratedImage } from '../../types';
-import { ImageDisplay } from '../ImageDisplay';
+import { GeneratedImage } from '@/types';
+import { ImageDisplay } from '@/features/image-display/ImageDisplay';
 import styles from './ImageSection.module.scss';
 
 export interface ImageSectionProps {

@@ -1,0 +1,263 @@
+@use '@/styles/main' as *;
+
+.historyItem {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  counter-increment: history-counter;
+
+  &::before {
+    content: counter(history-counter);
+    position: absolute;
+    top: var(--spacing-sm);
+    left: var(--spacing-sm);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 2;
+    min-width: 24px;
+    text-align: center;
+    backdrop-filter: blur(4px);
+  }
+
+  &:hover {
+    border-color: var(--color-border-secondary);
+    box-shadow: var(--shadow-lg);
+  }
+
+  // Focus styling removed - only buttons should have focus outlines
+}
+
+.imageContainer {
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--color-background);
+}
+
+.thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.content {
+  padding: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  flex: 1;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.prompt {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+  margin: 0;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.timestamp {
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+
+  @include mobile-up {
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+.actionButton {
+  @include button-base;
+  @include button-small;
+
+  &.deleteButton {
+    @include button-danger;
+  }
+}
+
+.confirmDialog {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.confirmContent {
+  background: var(--color-surface-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  max-width: 320px;
+  width: 90%;
+
+  // Ensure focus is trapped within dialog
+  &:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -2px;
+  }
+}
+
+.confirmTitle {
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+.confirmDescription {
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--spacing-lg) 0;
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+}
+
+.confirmActions {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: flex-end;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+}
+
+.confirmButton {
+  @include button-base;
+  @include button-danger;
+  @include button-small;
+}
+
+.cancelButton {
+  @include button-base;
+  @include button-small;
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .actionButton,
+  .confirmButton,
+  .cancelButton {
+    border-width: 2px;
+  }
+}
+
+// BEM Modifiers for view modes
+.historyItem--grid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .imageContainer {
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: var(--color-background);
+  }
+
+  .thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .content {
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between  ;
+    gap: var(--spacing-sm);
+    flex: 1;
+  }
+}
+
+.historyItem--list {
+  @include mobile-up {
+    flex-direction: row;
+    align-items: center;
+    max-width: none;
+    padding: var(--spacing-sm);
+
+    .imageContainer {
+      flex: 0 0 100px;
+      width: 100px;
+      height: 100px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-right: var(--spacing-md);
+    }
+
+    .thumbnail {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .content {
+      flex: 1;
+      padding: 0;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-sm);
+    }
+
+    .details {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .prompt {
+      line-clamp: 2;
+      -webkit-line-clamp: 2;
+    }
+
+    .actions {
+      flex-shrink: 0;
+      flex-direction: row;
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .historyItem,
+  .actionButton,
+  .confirmButton,
+  .cancelButton {
+    transition: none;
+  }
+}

@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
-import { PromptInputProps } from '../../types';
-import { GenerateButton } from '../GenerateButton';
+import { PromptInputProps } from '@/types';
+import { GenerateButton } from '@/components/GenerateButton';
 import styles from './PromptInput.module.scss';
 
 const placeholders = [

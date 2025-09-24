@@ -1,5 +1,5 @@
-import { ImageDisplayProps } from '../../types';
-import { LoadingSpinner } from '../LoadingSpinner';
+import { ImageDisplayProps } from '@/types';
+import { LoadingSpinner } from '@/shared/LoadingSpinner';
 import styles from './ImageDisplay.module.scss';
 
 export const ImageDisplay = ({ image, isLoading }: ImageDisplayProps) => {

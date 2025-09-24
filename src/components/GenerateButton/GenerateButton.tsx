@@ -1,16 +1,20 @@
-import { GenerateButtonProps } from '../../types';
-import { LoadingSpinner } from '../LoadingSpinner';
+import { GenerateButtonProps } from '@/types';
+import { LoadingSpinner } from '@/shared/LoadingSpinner';
 import styles from './GenerateButton.module.scss';
 
 export const GenerateButton = ({
   isLoading,
-  isValid = false
-}: Omit<GenerateButtonProps, 'onClick' | 'disabled' | 'variant'> & { isValid?: boolean }) => {
+  onClick,
+  disabled,
+  className,
+  isValid
+}: GenerateButtonProps) => {
   return (
     <button
       type="submit"
-      className={`${styles.button} ${isLoading ? styles.loading : ''} ${isValid ? styles.valid : ''}`}
-      disabled={isLoading}
+      className={`${styles.button} ${isLoading ? styles.loading : ''} ${isValid ? styles.valid : ''} ${className || ''}`}
+      disabled={disabled || isLoading}
+      onClick={onClick}
     >
       {isLoading ? (
         <>
